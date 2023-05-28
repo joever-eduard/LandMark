@@ -35,23 +35,23 @@
 		<table>
 			<tr>
 				<th>Lot No. :</th>
-				<td>23</td>
+				<td><?= isset($lot['lot_no']) ? esc($lot['lot_no']) : '' ?></td>
 			</tr>
 			<tr>
 				<th>Size of Area :</th>
-				<td>321321sqm</td>
+				<td><?= isset($lot['size_of_area']) ? esc($lot['size_of_area']) : '' ?></td>
 			</tr>
 			<tr>
 				<th>Cad No. :</th>
-				<td>232</td>
+				<td><?= isset($lot['cad_no']) ? esc($lot['cad_no']) : '' ?></td>
 			</tr>
 			<tr>
 				<th>Location :</th>
-				<td>Mat-Y</td>
+				<td><?= isset($lot['location']) ? esc($lot['location']) : '' ?></td>
 			</tr>
 			<tr>
 				<th>Phase :</th>
-				<td>432432</td>
+				<td><?= isset($lot['phase']) ? esc($lot['phase']) : '' ?></td>
 			</tr>
 			<tr>
 				<th>BLLM :</th>
@@ -63,11 +63,11 @@
 			</tr>
 			<tr>
 				<th>Land Owner :</th>
-				<td>John Doe</td>
+				<td><?= isset($lot['land_owner']) ? esc($lot['land_owner']) : '' ?></td>
 			</tr>
 			<tr>
 				<th>Status :</th>
-				<td>Active</td>
+				<td><?= isset($lot['status']) ? esc($lot['status']) : '' ?></td>
 			</tr>
 			<tr>
 				<th>Lot Valuation Amount :</th>

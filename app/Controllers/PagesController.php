@@ -20,11 +20,21 @@ class PagesController extends BaseController
 
     public function search()
     {
-        return view('search');
+
+        $lotModel = new LotModel();
+        
+        $lots = $lotModel->findAll();
+
+        // Retrieve the data you want to pass to the view
+        $data = [
+            'lots' => $lots,
+        ];
+
+        echo view('search', $data);
     }
 
     public function adminHome()
-    {   
+    {       
         $data = [];
 
         return view('adminhome', $data);
@@ -37,13 +47,33 @@ class PagesController extends BaseController
 
     public function adminSearch()
     {
-        return view('adminsearch');
+        $lotModel = new LotModel();
+        
+        $lots = $lotModel->findAll();
+
+        // Retrieve the data you want to pass to the view
+        $data = [
+            'lots' => $lots,
+        ];
+
+        echo view('adminsearch', $data);
     }
 
     public function searchinfo()
     {
-        return view('searchinfo');
+        $lotModel = new LotModel();
+
+        $lotNo = $this->request->getVar('lot_no'); // Get the lot_no from the request
+
+        $lots = $lotModel->where('lot_no', $lotNo)->findAll(); // Perform the search based on lot_no
+
+        $data = [
+            'lots' => $lots,
+        ];
+
+        echo view('searchinfo', $data);
     }
+
 
     public function documents()
     {
@@ -55,10 +85,6 @@ class PagesController extends BaseController
         // Retrieve the data you want to pass to the view
         $data = [
             'lots' => $lots,
-            'lot_no' => $this->request->getVar('lot_no'),
-            'cad_no' => $this->request->getVar('cad_no'),
-            'size_of_area' => $this->request->getVar('size_of_area'),
-            'location' => $this->request->getVar('location'),
         ];
 
         return view('documents', $data);
@@ -118,7 +144,7 @@ class PagesController extends BaseController
                 $data['location'] = $newData['location'];
                 
                 // Redirect to success page
-                return redirect()->to('/documents')->with('newData', $data);    
+                return redirect()->to('/documents/')->with('newData', $data);    
     
             } catch (\Exception $e) {
                 // Handle any exceptions thrown during the save process
@@ -131,7 +157,7 @@ class PagesController extends BaseController
     }
     
 
-    public function update()
+    public function update($lotId)
     {
 
         $data = [];
@@ -144,9 +170,13 @@ class PagesController extends BaseController
 
         // Get the data of the lot to be updated
         $lot = $lotModel->find($lotId);
-
+        $propertyDistance = $propertyDistanceModel->where('lot_id',$lotId)->first();
+        $propertyValuation = $propertyValuationModel->where('lot_id',$lotId)->first();
         // Populate the form with the data
+        $data['lotId'] = $lotId;
         $data['lot'] = $lot;
+        $data['propertyDistance'] = $propertyDistance;
+        $data['propertyValuation'] = $propertyValuation;
 
         if ($this->request->getMethod() == 'post') {
             $updatedData = [
@@ -179,7 +209,7 @@ class PagesController extends BaseController
                 ])->update();
 
                 // Redirect to success page
-                return redirect()->to('/update/' . $lotId);
+                return redirect()->to('/documents/');
 
             } catch (\Exception $e) {
                 // Handle any exceptions thrown during the update process

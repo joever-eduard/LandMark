@@ -26,9 +26,11 @@
         </div>
 
         <div class="search-container">
-            <h2>Search by Lot number :</h2>
-            <input type="search" placeholder="Lot No." class="search-bar">
-            <input type="submit" class="search-button" value="Submit">
+            <form action="/searchinfo" method="get">
+                <h2>Search by Lot number :</h2>
+                <input type="search" placeholder="Lot No." class="search-bar" name="lot_no">
+                <input type="submit" class="search-button" value="Submit">
+            </form>
         </div>
 
         <div class="table-container">
@@ -42,24 +44,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>001-A-001</td>
-                        <td>120 sqm</td>
-                        <td>Quezon City</td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>001-A-002</td>
-                        <td>150 sqm</td>
-                        <td>Makati City</td>
-                    </tr>
-                    <tr>
-                        <td>003</td>
-                        <td>001-A-003</td>
-                        <td>200 sqm</td>
-                        <td>Taguig City</td>
-                    </tr>
+
+                    <?php foreach ($lots as $lot) { ?>
+                        <tr>
+                        <td><?= isset($lot['lot_no']) ? esc($lot['lot_no']) : '' ?></td>
+                        <td><?= isset($lot['cad_no']) ? esc($lot['cad_no']) : '' ?></td>
+                        <td><?= isset($lot['size_of_area']) ? esc($lot['size_of_area']) : '' ?></td>
+                        <td><?= isset($lot['location']) ? esc($lot['location']) : '' ?></td>
+                        </tr>
+
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

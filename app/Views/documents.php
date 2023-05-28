@@ -86,7 +86,7 @@
                         <td><input type="file" name="file"></td>
                         <td>
                             <a href="#" class="view-link">View</a>
-                            <a href="/update" class="edit-link">Edit</a>
+                            <a href="/land/update/<?= isset($lot['id']) ? esc($lot['id']) : '' ?>" class="edit-link">Edit</a>
                         </td>
                         </tr>
 
@@ -97,7 +97,7 @@
         </div>
 
         <div class="button-container">
-            <a href="/add" class="button-link">Add Land Details</a>
+            <a href="land/add" class="button-link">Add Land Details</a>
         </div>
 
     </div>

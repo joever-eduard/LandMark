@@ -43,8 +43,10 @@ $routes->get('adminsearch', 'PagesController::adminSearch');
 $routes->get('searchinfo', 'PagesController::searchinfo');
 $routes->get('documents', 'PagesController::documents');
 $routes->get('reports', 'PagesController::reports');
-$routes->match(['get', 'post'], 'add', 'PagesController::add');
-$routes->get('update', 'PagesController::update');
+$routes->match(['get', 'post'], 'land/add', 'PagesController::add');
+$routes->match(['get', 'post'], 'land/update/(:num)', 'PagesController::update/$1');
+
+
 
 
 /*

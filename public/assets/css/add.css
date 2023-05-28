@@ -143,4 +143,72 @@ li:hover .dropdown {
     vertical-align: middle;
     color: white;
 }
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
+.divider {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex-grow: 1;
+    border-bottom: 1px solid #ccc;
+    margin: 0 30px;
+}
+
+.divider h2 {
+    margin: 0 10px;
+    font-size: 25px;
+    color: #333;
+}
+
+input[type="text"],
+  button[type="button"] {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .submit-container button {
+    width: 50%;
+    border-radius: 25px;
+    background-color: white;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 24px; /* Adjust the font size as desired */
+    padding: 12px 15px; /* Adjust the padding to resize the button */
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  
+  .added-fields-container {
+    margin-top: 20px;
+  }
+  
+  .added-fields-container h2 {
+    margin: 0 10px;
+    font-size: 25px;
+    color: #333;
+  }
+  
+  .added-field {
+    width: 92%;
+    font-size: 15px;
+    outline: none;
+    border: 1px solid white;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #e4e4e4;
+    background-color: white;
+  }
+  
+  

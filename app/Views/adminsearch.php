@@ -49,7 +49,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- <tr>
                         <td>001</td>
                         <td>001-A-001</td>
                         <td>120 sqm</td>
@@ -66,7 +66,17 @@
                         <td>001-A-003</td>
                         <td>200 sqm</td>
                         <td>Taguig City</td>
-                    </tr>
+                    </tr> -->
+
+                    <?php foreach ($lots as $lot) { ?>
+                        <tr>
+                        <td><?= isset($lot['lot_no']) ? esc($lot['lot_no']) : '' ?></td>
+                        <td><?= isset($lot['cad_no']) ? esc($lot['cad_no']) : '' ?></td>
+                        <td><?= isset($lot['size_of_area']) ? esc($lot['size_of_area']) : '' ?></td>
+                        <td><?= isset($lot['location']) ? esc($lot['location']) : '' ?></td>
+                    <?php } ?>
+
+
                 </tbody>
             </table>
         </div>
